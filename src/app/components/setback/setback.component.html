@@ -1,1 +1,26 @@
-<p>setback works!</p>
+<h1>Novo Imprevisto</h1>
+<form novalidate autocomplete="off" #setbackFormDirective="ngForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutGap="15px" style="padding: 0 15px 15px">
+  <mat-form-field appearance="fill">
+    <mat-label>Qual emprego?</mat-label>
+    <mat-select [(ngModel)]="selectedJob" #selectedJobDirective="ngModel" name="selectedJob" required>
+      <mat-option *ngFor="let job of jobs" [value]="job">
+        {{job.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Data</mat-label>
+    <input matInput [matDatepicker]="picker" [min]="this.selectedJob?.startingDate" [matDatepickerFilter]="onlyAvailableJobDays" [(ngModel)]="setback.day" name="day" required [disabled]="!selectedJob">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Horas perdidas</mat-label>
+    <input matInput type="number" [(ngModel)]="setback.hours" name="hours" required [disabled]="!setback.day">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Porque?</mat-label>
+    <textarea matInput [(ngModel)]="setback.explanation" name="explanation" required></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" [disabled]="!setbackFormDirective.form.valid">Salvar a Facada</button>
+</form>

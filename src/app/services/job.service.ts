@@ -117,6 +117,13 @@ export class JobService {
     return of(job);
   }
 
+  saveSetback(job: Job, setback: JobSetback): Observable<JobSetback> {
+    const foundJob = this.jobs.find(j => j === job);
+    foundJob.setbacks = foundJob.setbacks || [];
+    foundJob.setbacks.push(Object.assign({}, setback));
+    return of(setback);
+  }
+
   private calculateMonthlyIncome(job: Job): void {
     const today = new Date();
     const startingDay = job.startingDate.getMonth() === today.getMonth() ? job.startingDate.getDate() : 1;
