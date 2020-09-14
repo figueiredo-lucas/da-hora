@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="danger-stripe" *ngIf="hasSetbacksForThisMonth(job)">{{getSetbacksAmountPerMonth(job)}}</div>
+  <div fxLayout="column" fxLayoutGap="15px">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <p>{{job.name}}</p>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="subtitle" fxLayout="column" fxLayoutGap="4px">
+        <div fxLayout="row" fxLayoutGap="4px">
+          <span class="material-icons subtitle">schedule</span>
+          <span>{{calculateWeeklyHours(job)}}h por semana</span>
+        </div>
+        <p class="money subtitle">{{job.valuePerHour.toFixed(2).replace('.', ',')}}/h</p>
+      </div>
+      <h2 class="important money">{{job.monthlyIncome?.toFixed(0)}}<span class="small-number">{{job.monthlyIncome?.toFixed(2).substr(-3).replace('.', ',')}}</span></h2>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+@import '../../../variables';
+
+.card {
+  background: $background-info;
+  color: $grey;
+  // margin: 0 30px;
+  // border-radius: 1rem;
+  padding: 1.5rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  // box-shadow: 3px 6px 14px $shadow, -1px -1px 4px -2px $shadow;
+
+  p {
+    margin: 0;
+  }
+
+  .important {
+    color: $text-important;
+    text-align: right;
+    padding: 0;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+    color: $grey;
+  }
+
+  .text-danger {
+    font-size: 1rem;
+    color: $text-danger;
+  }
+
+  .danger-stripe {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 20px;
+    height: 36px;
+    background: #FF5C77;
+    color: #262d31;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.25rem 0;
+    border-radius: 0 0 10px 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-shadow: 4px 8px 16px rgba(0, 0, 0, .2),
+      2px 2px 4px rgba(0, 0, 0, .4),
+      -1px 0px 1px rgba(30, 30, 30, 0.8);
+
+    &:after {
+      content: "warning";
+      font-family: "Material Icons";
+      left: 50%;
+      position: absolute;
+      top: 1px;
+      transform: translateX(-50%);
+      color: #262d31;
+      font-size: 16px;
+      font-weight: normal;
+    }
+  }
+}

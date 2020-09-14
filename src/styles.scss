@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'variables';
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+$dark-primary: mat-palette($mat-light-green);
+$dark-accent:  mat-palette($mat-light-green, A200, A100, A400);
+$dark-warn:    mat-palette($mat-pink);
+
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+// Include the dark color styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+body {
+  @include angular-material-theme($dark-theme);
+
+  background: $background;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  margin: 0;
+  color: $offwhite;
+  height: 100vh;
+  overflow: hidden;
+}
+
+input.mat-input-element, .text-normal, .mat-slide-toggle-content {
+  color: $offwhite;
+}
+
+* {
+  outline: none;
+}
+
+.font-normal {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Alata, Roboto, sans-serif;
+  color: $text-important;
+  margin: 0;
+  padding: 1rem;
+  letter-spacing: 1.5px;
+}
+
+.money:before {
+  content: "R$";
+  font-size: 0.65em;
+}
+
+.small-number {
+  font-size: .65em;
+}
+
+button.mat-raised-button {
+  text-transform: uppercase;
+  font-family: Alata, Roboto, sans-serif;
+}
