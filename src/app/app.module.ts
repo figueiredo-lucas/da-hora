@@ -28,6 +28,11 @@ import { JobRegisterComponent } from './components/job-register/job-register.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SetbackComponent } from './components/setback/setback.component';
+import { MaxDirective } from './max.directive';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { UserComponent } from './components/user/user.component';
+import { PrivateComponent } from './components/private/private.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,12 @@ import { SetbackComponent } from './components/setback/setback.component';
     HeaderComponent,
     JobRegisterComponent,
     ProfileComponent,
-    SetbackComponent
+    SetbackComponent,
+    MaxDirective,
+    LoginComponent,
+    RegisterComponent,
+    UserComponent,
+    PrivateComponent
   ],
   imports: [
     BrowserModule,

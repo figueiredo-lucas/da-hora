@@ -62,3 +62,27 @@ button.mat-raised-button {
   text-transform: uppercase;
   font-family: Alata, Roboto, sans-serif;
 }
+
+.public-container {
+  margin-top: 15vh;
+  padding: 0 30px;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.float-button {
+  top: 15px;
+  position: absolute !important;
+
+  &--left {
+    padding-left: 15px;
+    left: 15px;
+  }
+
+  &--right {
+    padding-right: 15px;
+    right: 15px;
+  }
+}

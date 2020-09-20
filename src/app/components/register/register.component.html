@@ -1,0 +1,21 @@
+<button mat-button color="primary" class="float-button float-button--left">
+  <span class="material-icons" routerLink="/login" style="font-size: 36px">chevron_left</span>
+</button>
+<div class="public-container" fxLayout="column" fxLayoutAlign="center">
+  <h1>Nova conta</h1>
+  <form fxLayout="column" novalidate autocomplete="off" #registerFormDirective="ngForm" (ngSubmit)="register()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput type="email" [(ngModel)]="user.name" name="name" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="user.email" name="email" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Senha</mat-label>
+      <input matInput type="password" [(ngModel)]="user.password" name="password" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="!registerFormDirective.valid">Cadastrar</button>
+  </form>
+</div>

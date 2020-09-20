@@ -1,12 +1,18 @@
+<button mat-button class="float-button float-button--right" (click)="logout()">
+  <span class="material-icons">power_settings_new</span>
+</button>
 <div fxLayout="column" fxLayoutAlign="space-between center" class="balance">
-  <div fxFlex fxLayout="column" fxLayoutAlign="center center">
-    <h2 class="text-normal font-normal" style="text-align: center;"><span style="font-weight: bold;">Allan</span>, até o dia {{maxPayDay}}<br>você vai receber:</h2>
+  <div fxFlex fxLayout="column" fxLayoutAlign="center center" *ngIf="balance">
+    <h2 class="text-normal font-normal" style="text-align: center;"><span style="font-weight: bold;">{{user.name.split(' ')[0]}}</span>, até o dia {{maxPayDay}}<br>você vai receber:</h2>
     <span class="money balance-money" *ngIf="showBalance">{{balance.toFixed(0)}}<span class="small-number">{{balance.toFixed(2).substr(-3).replace('.', ',')}}</span></span>
     <span class="balance-money hidden" *ngIf="!showBalance"></span>
     <span class="text-normal material-icons-outlined" *ngIf="showBalance" (click)="showBalance = !showBalance">visibility_off</span>
     <span class="text-normal material-icons-outlined" *ngIf="!showBalance" (click)="showBalance = !showBalance">visibility</span>
   </div>
-  <div class="text-normal" routerLink="../jobs" fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex fxLayout="column" fxLayoutAlign="center center" *ngIf="!balance">
+    <h2 class="text-normal font-normal" style="text-align: center;"><span style="font-weight: bold;">{{user.name.split(' ')[0]}}</span>, parece que<br>você ainda não tem<br> nada cadastrado :(</h2>
+  </div>
+  <div class="text-normal" routerLink="../jobs" fxLayout="row" fxLayoutAlign="center center" *ngIf="balance">
     mais detalhes
     <span class="material-icons">chevron_right</span>
   </div>

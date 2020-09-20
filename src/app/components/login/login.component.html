@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="center" class="public-container">
+  <h1>Olá!</h1>
+  <form fxLayout="column" novalidate autocomplete="off" #loginFormDirective="ngForm" (ngSubmit)="login()">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="user.email" name="email" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Senha</mat-label>
+      <input matInput type="password" [(ngModel)]="user.password" name="password" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="!loginFormDirective.valid">Login</button>
+  </form>
+  <div class="sublinks" fxLayout="row" fxLayoutAlign="space-between stretch">
+    <a routerLink="/register">Esqueci minha senha</a>
+    <a routerLink="/register">Criar conta</a>
+  </div>
+</div>

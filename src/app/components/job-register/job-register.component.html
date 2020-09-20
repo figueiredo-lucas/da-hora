@@ -1,38 +1,62 @@
-<h1>Novo emprego</h1>
-<form novalidate autocomplete="off" #jobFormDirective="ngForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutGap="15px" style="padding: 0 15px 15px">
+<h1>Novo trampo</h1>
+<form novalidate autocomplete="off" #jobFormDirective="ngForm" (ngSubmit)="onSubmit()" fxLayout="column"
+  fxLayoutGap="15px" style="padding: 0 15px 15px">
+  <mat-form-field appearance="fill">
+    <mat-label>Tipo</mat-label>
+    <mat-select [(ngModel)]="job.type" name="type" required #typeDirective="ngModel">
+      <mat-option value="J">Emprego</mat-option>
+      <mat-option value="E">Evento</mat-option>
+    </mat-select>
+  </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Nome</mat-label>
     <input matInput [(ngModel)]="job.name" name="name" required>
   </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Valor da hora</mat-label>
-    <input matInput type="number" [(ngModel)]="job.valuePerHour" name="valuePerHour" required>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Data de início</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="job.startingDate" name="startingDate" required>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <mat-slide-toggle name="payOnFifthLaborDay" [(ngModel)]="job.payOnFifthLaborDay">Paga no quinto dia útil?
-  </mat-slide-toggle>
-  <mat-form-field appearance="fill" *ngIf="!job.payOnFifthLaborDay">
-    <mat-label>Dia de pagamento</mat-label>
-    <input matInput type="number" [(ngModel)]="job.paymentDay" name="paymentDay" [required]="!job.payOnFifthLaborDay">
-  </mat-form-field>
-  <div>
-    <h3 class="font-normal text-normal" style="padding: 1rem 0 .25rem;">Dias de trabalho</h3>
-    <mat-list>
-      <mat-list-item *ngFor="let day of selectedDays; index as i" style="padding-top: .25rem">
-        <span matLine>
-          <mat-slide-toggle name="day{{i}}" [(ngModel)]="day.checked">{{day.name}}</mat-slide-toggle>
-        </span>
-        <mat-form-field *ngIf="day.checked">
-          <input matInput type="number" placeholder="Horas" [(ngModel)]="day.hours" name="hours{{i}}"
-            [required]="day.checked">
-        </mat-form-field>
-      </mat-list-item>
-    </mat-list>
+  <div fxLayout="column" fxLayoutGap="15px" *ngIf="job.type === 'E'">
+    <mat-form-field appearance="fill">
+      <mat-label>Valor a receber</mat-label>
+      <input matInput type="number" [(ngModel)]="job.value" name="value" [required]="job.type === 'E'">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Data do evento</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="job.startingDateObj" name="startingDate" [required]="job.type === 'E'">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
   </div>
-  <button mat-raised-button color="primary" [disabled]="!jobFormDirective.form.valid || !hasSelectedDays()">Salvar a Labuta</button>
+  <div fxLayout="column" fxLayoutGap="15px" *ngIf="job.type === 'J'">
+    <mat-form-field appearance="fill">
+      <mat-label>Valor da hora</mat-label>
+      <input matInput type="number" [(ngModel)]="job.value" name="value" [required]="job.type === 'J'">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Data de início</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="job.startingDateObj" name="startingDate" [required]="job.type === 'J'">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-slide-toggle name="payOnFifthLaborDay" [(ngModel)]="job.payOnFifthLaborDay">Paga no quinto dia útil?
+    </mat-slide-toggle>
+    <mat-form-field appearance="fill" *ngIf="!job.payOnFifthLaborDay">
+      <mat-label>Dia de pagamento</mat-label>
+      <input matInput type="number" [(ngModel)]="job.paymentDay" max="31" name="paymentDay"
+        [required]="job.type === 'J' && !job.payOnFifthLaborDay">
+    </mat-form-field>
+    <div>
+      <h3 class="font-normal text-normal" style="padding: 1rem 0 .25rem;">Dias de trabalho</h3>
+      <mat-list>
+        <mat-list-item *ngFor="let day of selectedDays; index as i" style="padding-top: .25rem">
+          <span matLine>
+            <mat-slide-toggle name="day{{i}}" [(ngModel)]="day.checked">{{day.name}}</mat-slide-toggle>
+          </span>
+          <mat-form-field *ngIf="day.checked">
+            <input matInput type="number" placeholder="Horas" [(ngModel)]="day.hours" max="24" name="hours{{i}}"
+              [required]="job.type === 'J' && day.checked">
+          </mat-form-field>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  <button mat-raised-button color="primary" [disabled]="!jobFormDirective.form.valid || (job.type === 'J' && !hasSelectedDays())">Salvar a
+    Labuta</button>
 </form>

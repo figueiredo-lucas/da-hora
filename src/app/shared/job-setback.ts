@@ -1,5 +1,6 @@
 export interface JobSetback {
-  day: Date,
+  dayObj?: Date,
+  day: number,
   hours: number,
   explanation?: string
 }

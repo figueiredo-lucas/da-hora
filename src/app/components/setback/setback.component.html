@@ -10,13 +10,13 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Data</mat-label>
-    <input matInput [matDatepicker]="picker" [min]="this.selectedJob?.startingDate" [matDatepickerFilter]="onlyAvailableJobDays" [(ngModel)]="setback.day" name="day" required [disabled]="!selectedJob">
+    <input matInput [matDatepicker]="picker" [min]="this.selectedJob?.startingDateObj" [matDatepickerFilter]="onlyAvailableJobDays" [(ngModel)]="setback.dayObj" name="day" required [disabled]="!selectedJob">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Horas perdidas</mat-label>
-    <input matInput type="number" [(ngModel)]="setback.hours" name="hours" required [disabled]="!setback.day">
+    <input matInput type="number" [(ngModel)]="setback.hours" name="hours" [max]="getMaxHoursForSelectedDay()" required [disabled]="!setback.dayObj">
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Porque?</mat-label>

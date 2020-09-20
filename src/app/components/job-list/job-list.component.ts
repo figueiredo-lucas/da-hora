@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/shared/job';
 import { JobService } from 'src/app/services/job.service';
+import { map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 
 
@@ -15,11 +17,16 @@ export class JobListComponent implements OnInit {
   constructor(private jobService: JobService) { }
 
   jobs: Job[];
+  private jobSub: Subscription;
 
   ngOnInit(): void {
-    this.jobService.getJobs().subscribe(jobs => {
+    this.jobSub = this.jobService.getJobs().subscribe(jobs => {
       this.jobs = jobs;
     })
+  }
+
+  ngOnDestroy(): void {
+    this.jobSub.unsubscribe();
   }
 
 }

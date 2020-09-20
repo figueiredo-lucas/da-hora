@@ -2,12 +2,15 @@ import { JobDays } from './job-days';
 import { JobSetback } from './job-setback';
 
 export interface Job {
+  key: string,
+  type: string,
   name: string,
-  startingDate: Date,
+  startingDateObj?: Date,
+  startingDate: number,
   paymentDay?: number,
-  payOnFifthLaborDay: boolean,
-  valuePerHour: number,
+  payOnFifthLaborDay?: boolean,
+  value: number,
   monthlyIncome?: number,
-  jobDays: JobDays[],
+  jobDays?: JobDays[],
   setbacks?: JobSetback[]
 }
