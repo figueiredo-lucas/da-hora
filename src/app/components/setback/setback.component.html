@@ -1,5 +1,6 @@
-<h1>Novo Imprevisto</h1>
-<form novalidate autocomplete="off" #setbackFormDirective="ngForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutGap="15px" style="padding: 0 15px 15px">
+<app-header title="Imprevisto" returnTo="../balance"></app-header>
+<form novalidate autocomplete="off" #setbackFormDirective="ngForm" (ngSubmit)="onSubmit()"
+  fxLayout="column" fxLayoutGap="15px" class="inner-form pad">
   <mat-form-field appearance="fill">
     <mat-label>Qual emprego?</mat-label>
     <mat-select [(ngModel)]="selectedJob" #selectedJobDirective="ngModel" name="selectedJob" required>

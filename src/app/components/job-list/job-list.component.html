@@ -1,4 +1,7 @@
-<h1><span class="material-icons" routerLink="../balance">chevron_left</span>Extrato</h1>
-<div fxLayout="column" fxLayoutGap="1px" class="job-list">
+<app-header title="Extrato" returnTo="../balance"></app-header>
+<div fxLayout="column" fxLayoutAlign="center center" class="inner-form" style="height: calc(100% - 74px)" *ngIf="loading">
+  <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+</div>
+<div fxLayout="column" fxLayoutGap="1px" class="inner-form" *ngIf="!loading">
   <app-card [job]="job" *ngFor="let job of jobs"></app-card>
 </div>

@@ -18,9 +18,11 @@ export class JobListComponent implements OnInit {
 
   jobs: Job[];
   private jobSub: Subscription;
+  loading: boolean = true;
 
   ngOnInit(): void {
     this.jobSub = this.jobService.getJobs().subscribe(jobs => {
+      this.loading = false;
       this.jobs = jobs;
     })
   }

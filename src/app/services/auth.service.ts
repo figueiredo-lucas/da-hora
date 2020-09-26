@@ -23,6 +23,10 @@ export class AuthService {
     return this.afAuth.signOut();
   }
 
+  forgotPassword(email: string): Promise<void> {
+    return this.afAuth.sendPasswordResetEmail(email);
+  }
+
   register(value) {
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(value.email, value.password)

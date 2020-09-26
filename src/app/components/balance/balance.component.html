@@ -1,7 +1,10 @@
 <button mat-button class="float-button float-button--right" (click)="logout()">
   <span class="material-icons">power_settings_new</span>
 </button>
-<div fxLayout="column" fxLayoutAlign="space-between center" class="balance">
+<div fxLayout="column" fxLayoutAlign="center center" class="balance" *ngIf="loading">
+  <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+</div>
+<div fxLayout="column" fxLayoutAlign="space-between center" class="balance" *ngIf="!loading">
   <div fxFlex fxLayout="column" fxLayoutAlign="center center" *ngIf="balance">
     <h2 class="text-normal font-normal" style="text-align: center;"><span style="font-weight: bold;">{{user.name.split(' ')[0]}}</span>, até o dia {{maxPayDay}}<br>você vai receber:</h2>
     <span class="money balance-money" *ngIf="showBalance">{{balance.toFixed(0)}}<span class="small-number">{{balance.toFixed(2).substr(-3).replace('.', ',')}}</span></span>

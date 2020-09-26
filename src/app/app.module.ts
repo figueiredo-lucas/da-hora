@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { PrivateComponent } from './components/private/private.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { JobDetailsComponent } from './components/job-details/job-details.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,9 @@ import { PrivateComponent } from './components/private/private.component';
     LoginComponent,
     RegisterComponent,
     UserComponent,
-    PrivateComponent
+    PrivateComponent,
+    ForgotPasswordComponent,
+    JobDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +75,8 @@ import { PrivateComponent } from './components/private/private.component';
     MatListModule,
     MatButtonModule,
     MatSlideToggleModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [{
     provide: MAT_DATE_LOCALE,

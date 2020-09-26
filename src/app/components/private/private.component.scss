@@ -1,5 +1,6 @@
+@import '../../../variables';
+
 .container {
-  max-height: calc(100vh - 3.5rem);
-  height: calc(100vh - 3.5rem);
-  overflow: auto;
+  max-height: calc(100vh - 4rem);
+  height: calc(100vh - 4rem);
 }

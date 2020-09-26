@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" [routerLink]="['/p/job-detail', job.key]">
   <div class="danger-stripe" *ngIf="hasSetbacksForThisMonth(job)">{{getSetbacksAmountPerMonth(job)}}</div>
   <div fxLayout="column" fxLayoutGap="15px">
     <div fxLayout="row" fxLayoutAlign="space-between center">

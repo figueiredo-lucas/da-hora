@@ -85,3 +85,12 @@ button.mat-raised-button {
     right: 15px;
   }
 }
+
+.inner-form {
+  max-height: calc(100% - 74px);
+  overflow: auto;
+
+  &.pad {
+    padding: 15px 30px;
+  }
+}

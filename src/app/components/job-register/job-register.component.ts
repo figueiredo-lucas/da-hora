@@ -43,7 +43,7 @@ export class JobRegisterComponent implements OnInit {
     this.job.value = parseFloat(this.job.value.toString().replace(',', '.'));
     this.job.jobDays = this.getJobDaysFromSelectedDays();
     this.jobService.saveJob(this.job).subscribe(snapshot => {
-      this.snackBar.open(`Agora que o trampo "${this.job.name}" já tá salvo, bora pra luta!`, null, { duration: 5000, verticalPosition: 'top' })
+      this.snackBar.open(`Agora que o trampo "${this.job.name}" já tá salvo, bora pra luta!`, 'Fechar', { duration: 4000, verticalPosition: 'top' })
       this.jobForm.reset();
       this.jobForm.resetForm();
       setTimeout(() => {

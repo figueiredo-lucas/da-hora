@@ -1,6 +1,6 @@
-<h1>Novo trampo</h1>
+<app-header title="Trampo" returnTo="../balance"></app-header>
 <form novalidate autocomplete="off" #jobFormDirective="ngForm" (ngSubmit)="onSubmit()" fxLayout="column"
-  fxLayoutGap="15px" style="padding: 0 15px 15px">
+  fxLayoutGap="15px" class="inner-form pad">
   <mat-form-field appearance="fill">
     <mat-label>Tipo</mat-label>
     <mat-select [(ngModel)]="job.type" name="type" required #typeDirective="ngModel">

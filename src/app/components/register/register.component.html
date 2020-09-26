@@ -1,8 +1,5 @@
-<button mat-button color="primary" class="float-button float-button--left">
-  <span class="material-icons" routerLink="/login" style="font-size: 36px">chevron_left</span>
-</button>
+<app-header title="Nova conta" returnTo="/login"></app-header>
 <div class="public-container" fxLayout="column" fxLayoutAlign="center">
-  <h1>Nova conta</h1>
   <form fxLayout="column" novalidate autocomplete="off" #registerFormDirective="ngForm" (ngSubmit)="register()">
     <mat-form-field appearance="fill">
       <mat-label>Nome</mat-label>

@@ -20,6 +20,7 @@ export class BalanceComponent implements OnInit {
   maxPayDay: number;
   user: User;
   private jobSub: Subscription;
+  loading: boolean = true;
 
   logout() {
     this.authService.logout().then(() => {
@@ -30,6 +31,7 @@ export class BalanceComponent implements OnInit {
 
   ngOnInit(): void {
     this.jobSub = this.jobService.getJobs().subscribe(jobs => {
+      this.loading = false;
       this.balance = jobs.reduce((acc, curr) => acc + curr.monthlyIncome, 0);
       this.maxPayDay = this.jobService.getMaxPayDay(jobs);
     });

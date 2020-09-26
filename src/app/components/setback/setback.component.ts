@@ -41,7 +41,7 @@ export class SetbackComponent implements OnInit {
     this.jobService.saveSetback(this.selectedJob, this.setback).then(() => {
       this.setbackFormDirective.reset();
       this.setbackFormDirective.resetForm();
-      this.snackBar.open('A facada tá salva. Boa sorte na próxima!', null, { duration: 5000, verticalPosition: 'top' });
+      this.snackBar.open('A facada tá salva. Boa sorte na próxima!', 'Fechar', { duration: 4000, verticalPosition: 'top' });
     });
   }
 
